@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>AGRIORACLE</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/function">Function</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Automated</h2>
+            <button id="automated-btn">Fetch Data</button>
+            <div id="automated-result"></div>
+        </section>
+        <section>
+            <h2>Semi-Automated</h2>
+            <input type="number" id="temperature" placeholder="Temperature">
+            <input type="number" id="rh" placeholder="Relative Humidity">
+            <button id="semi-automated-btn">Fetch Data</button>
+            <div id="semi-automated-result"></div>
+        </section>
+        <section>
+            <h2>Manual</h2>
+            <select id="crop-name">
+                <option value="Rice">Rice</option>
+                <option value="Cotton">Cotton</option>
+            </select>
+            <select id="standard-week">
+                <!-- Options for Week 1 to Week 52 -->
+                {% for week in range(1, 53) %}
+                <option value="{{ week }}">Week {{ week }}</option>
+                {% endfor %}
+            </select>
+            <input type="number" id="max-temp" placeholder="Max Temperature">
+            <input type="number" id="min-temp" placeholder="Min Temperature">
+            <input type="number" id="rh1" placeholder="RH1">
+            <input type="number" id="rh2" placeholder="RH2">
+            <input type="number" id="rainfall" placeholder="Rainfall">
+            <button id="manual-btn">Predict Pest</button>
+            <div id="manual-result"></div>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
